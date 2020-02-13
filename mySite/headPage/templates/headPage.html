@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'firstPage.css' %}" />
+
+<body>
+
+    <p>Запрос: {{request}}</p>
+
+    <span class="orangeClass">latest_firstPage: {{ latest_firstPage }}</span> <br>
+    <span>Test.var_1: {{ var_1 }}</span> <br>
+    <span>range: {{ range }}</span> <br>
+    <span>rend: {{ rend }}</span> <br>
+
+    {% if latest_firstPage > 50 %}
+
+    <div class="orangeClass"></div>
+    <p>Ветка IF</p>
+    <ul>
+        {% for i in range %}
+        <li>
+            <a href="https://yandex.ru/search/?text={{i}}" target="_blank">
+                {{ i }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+
+    {% else %}
+    <p>Ветка ELSE</p>
+    {% endif %}
+
+    <a href="/firstPage/">FirstPage</a>
+    <br>
+    <a href="/riddles/">Riddles</a>
+    <br>
+    <a href="/admin/">Admin</a>
+    
+</body>
