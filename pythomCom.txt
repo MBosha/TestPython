@@ -1,13 +1,19 @@
-django-admin startproject
-django-admin startapp
+|| создание проекта ||
+py manage.py startproject
 
-django-admin makemigrations
-django-admin migrate
+|| создание приложения ||
+py manage.py startapp
 
-django-admin createsuperuser
+|| подготовка миграции в базу данных ||
+py manage.py makemigrations
 
+|| миграция данных в базу данных ||
+py manage.py migrate
+
+|| создание пользователя Администратор ||
 py manage.py createsuperuser
 
+|| запуск сервера ||
 py manage.py runserver
 
 
