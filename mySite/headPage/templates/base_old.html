@@ -1,0 +1,40 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+    <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cssHeadPage.css' %}" />
+    </head>
+    <body>
+        <!--верхняя часть-->
+        <header>
+            {% block header %}
+            {% endblock header %}
+        </header>
+        <!--панель навигации-->
+        <nav>
+            {% block nav %}
+            {% endblock nav %}
+        </nav>
+        <!--основное содержимое-->
+        <section>
+            {% block section %}
+                <article>
+                    {% block article %}
+                    {% endblock article %}
+                </article>
+                <!--правая боковая панель-->
+                <aside>
+                    {% block aside %}
+                    {% endblock aside %}
+                </aside>
+            {% endblock section %}
+        </section>        
+        <!--подвал-->
+        <footer>
+            {% block footer %}
+            {% endblock footer %}
+        </footer>    
+    </body>
+</html>

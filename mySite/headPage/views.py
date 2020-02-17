@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 from django.db.models.query_utils import DeferredAttribute
 from django.views.generic.list import ListView
 from django.http import Http404
+from django.views.generic import UpdateView
 
 from .models import Section, Article
 
