@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
 {% block page %}
     <article>
-    <h1>Разделы</h1>
-    {{ context }}
-    {% if context %}
-        <ul>        
-        <!--
-        {{section_list}}
-        
-        {% for section in section_list %}
-            <li>
-            <a href="{% url section.section_url %}">{{ section.section_title }}</a>            
-            </li>
-        {% endfor %}   
-        -->     
-        </ul>
-    {% endif %}
+        <h1>Количество записей {{ count }}</h1>
+        {% if count > 0  %}
+            <ul>
+                {% for section in sections %}
+                    <li>{{section.section_title}}</li>
+                    <li>{{section.section_url}}</li>
+                    <li>{{section.section_description}}</li>
+                    <br>
+                {% endfor %} 
+            </ul>
+        {% else %}
+            <h1>Нет записей</h1>
+        {% endif %}
     </article>
-{% endblock %}
+{% endblock page %}

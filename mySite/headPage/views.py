@@ -8,12 +8,23 @@ from django.views.generic.list import ListView
 from .models import Section, Article
 
 import datetime
+import random
 
 class MyView(View):
+    model = Article
+    template_name = 'headPage.html'
+    context_object_name = 'articles'
 
     def get(self, request, *args, **kwargs):
-        body = 'Hello, World!' + MyView.current_datetime()
-        return HttpResponse(body)
+        #body = 'Hello, World!' + MyView.current_datetime()
+        #return HttpResponse(body)        
+        randomNum1 = random.randint(0, 30)
+        randomNum2 = random.randint(0, 100) 
+        randomNum3 = random.randint(0, 100)        
+        articles = self.model.objects.all()
+        rend = self.model.objects.count()
+        context = {"latest_firstPage": randomNum2, "var_1" : randomNum3, "range": range(randomNum1), "rend" : rend, 'articles':articles}
+        return render(request, self.template_name, context=context)
 
     def my_view(self, request):
         if request:
@@ -31,17 +42,24 @@ class MyView(View):
 
 class MyIndexView(View):
     model = Section
+    template_name = 'index.html'
+    context_object_name = 'sections'
  
     def get(self, request, *args, **kwargs):
+        """
         the_data={}
-        the_data1={}
+        the_data1={}        
         all_lessons= self.model.objects.all()
         for lesson in all_lessons:
             the_data1[lesson]=all_lessons.all()
             for section in the_data1[lesson]:
-                the_data[lesson][section]=section.file.all()
+                the_data[lesson][section]=section
                 context={'the_data':the_data,}
-
+        """
+        sections = self.model.objects.all()
+        count = self.model.objects.count()
+        context = {'sections':sections,'count':count,}
+        
         #context += str(self.model.section_title)
         #context += self.model.section_url
         #context += self.model.section_description
@@ -53,7 +71,7 @@ class MyIndexView(View):
         #body += body2
         #body = render_to_string('index.html', {'section_list' : context})
  
-        return render(request, template_name=self.template_name, context=context)
+        return render(request, self.template_name, context=context)
         #return HttpResponse(context)
  
 class MySectionView(View):
@@ -66,8 +84,7 @@ class MySectionView(View):
         context['section'] = section
  
         return render(request, template_name=self.template_name, context=context)
- 
- 
+  
 class MyArticleView(View):
     template_name = 'headPage/article.html'
  

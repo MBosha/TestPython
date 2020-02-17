@@ -20,8 +20,5 @@ from headPage.views import MyView, MyIndexView, MySectionView, MyArticleView
 urlpatterns = [    
     path('', MyView.as_view(), name='my-view'),
     path('admin/', admin.site.urls),
-    path('index/', MyIndexView.as_view(), name='index.html'),
-    #path('index/', MyIndex.as_view()),
-    
-    
+    path('index/', MyIndexView.as_view()),
 ]
