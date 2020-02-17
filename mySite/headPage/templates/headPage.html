@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-
-{% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'firstPage.css' %}" />
+{% extends 'base.html' %}
+{% block page %}
 
 <body>
-
     <p>Запрос: {{request}}</p>
-
-    <span class="orangeClass">latest_firstPage: {{ latest_firstPage }}</span> <br>
+    {% if latest_firstPage > 50 %}
+        <span style = "color:rgb(255,0,0)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
+    {% else %}
+        <span style = "color:rgb(0,0,255)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
+    {% endif %}
+    
     <span>Test.var_1: {{ var_1 }}</span> <br>
     <span>range: {{ range }}</span> <br>
     <span>Количество статей: {{ rend }}</span> <br>
@@ -29,18 +29,31 @@
     {% else %}
         <p>Ветка ELSE</p>
         <span>START</span> <br>
-        {% for article in articles %}
-            <ul>
-                <li>Заголовок____: {{ article.article_title }}</li>
-                <li>Секция_______: {{ article.article_section }}</li>
-                <li>Пользователь_:{{ article.article_author }}</li>
-                <li>Создано______:{{ article.article_date }}</li>
-                <li>Содержимое___:{{ article.article_content }}</li>
-                <li>Статус_______:{{ article.article_status }}</li>
-            </ul>        
-        {% endfor %}
+        <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor='lightgray'>
+            <tr>
+                <th>Заголовок</th>
+                <th>Секция</th>
+                <th>Пользователь</th>
+                <th>Создано</th>
+                <th>Содержимое</th>
+                <th>Статус</th>
+            </tr>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.article_title }}</td>
+                    <td>{{ article.article_section }}</td>
+                    <td>{{ article.article_author }}</td>
+                    <td>{{ article.article_date }}</td>
+                    <td>{{ article.article_content }}</td>
+                    <td>{{ article.article_status }}</td>
+                </tr>            
+            {% endfor %}
+        </table>
         <span>END</span> <br> <br>
     {% endif %}
     <a href="/admin/">Admin</a>
+    <br>
+    <a href="/index/">Index</a>
     
 </body>
+{% endblock page %}
