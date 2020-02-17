@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
-
-{% block content %}
+{% block page %}
     <article>
         <h1>Количество записей {{ count }}</h1>
         {% if count > 0  %}
@@ -20,31 +18,4 @@
     <a href="/admin/">Admin</a>
     <br>
     <a href="/">Главная</a>   
-
-  <form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit" class="btn btn-success">Save person</button>
-  </form>
-{% endblock content %}
-
-{% block header %}
-    <p>HEADER</p>
-{% endblock header %}
-
-{% block footer %}
-    <p>FOOTER</p>
-{% endblock footer %}
-
-{% block nav %}
-    <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor="lightyellow">
-        <tr>
-            <th><a href="/admin/">Admin</a></th>
-            <th><a href="/">Главная</a></th>
-        </tr>
-    </table>
-{% endblock nav %}
-
-{% block aside %}
-    <p>ASIDE</p>
-{% endblock aside %}
+{% endblock page %}

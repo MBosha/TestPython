@@ -31,8 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'crispy_forms',
-    'bootstrap4',
+    'bootstrap3',
     'headPage',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,8 +51,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ROOT_URLCONF = 'mySite.urls'
 

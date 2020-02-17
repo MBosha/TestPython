@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% block page %}
 
-{% block content %}
+<body>
     <p>Запрос: {{request}}</p>
     {% if latest_firstPage > 50 %}
         <span style = "color:rgb(255,0,0)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
@@ -51,29 +51,9 @@
         </table>
         <span>END</span> <br> <br>
     {% endif %}
-
-    <form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit" class="btn btn-success">Save person</button>
-  </form>
-{% endblock content %}
-
-
-{% block header %}
-    <p>HEADER</p>
-{% endblock header %}
-{% block footer %}
-    <p>FOOTER</p>
-{% endblock footer %}
-{% block nav %}
-    <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor="lightyellow">
-        <tr>
-            <th><a href="/admin/">Admin</a></th>
-            <th><a href="/index/">Index</a></th>
-        </tr>
-    </table>
-{% endblock nav %}
-{% block aside %}
-    <p>ASIDE</p>
-{% endblock aside %}
+    <a href="/admin/">Admin</a>
+    <br>
+    <a href="/index/">Index</a>
+    
+</body>
+{% endblock page %}
