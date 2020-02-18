@@ -50,4 +50,10 @@ p, div.button {
 p.error-message {
     color: lightcoral;
 }
-/*<!--#empty-->*/
+
+.hrMy {
+    /*align: center;*/
+    color: red;
+    size: 10px;
+    width: 15 px;
+}

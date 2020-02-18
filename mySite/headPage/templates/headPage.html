@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block page %}
+{% block content %}
 
 <body>
     <p>Запрос: {{request}}</p>
@@ -51,7 +51,6 @@
         </table>
         <span>END</span> <br> <br>
     {% endif %}
-<<<<<<< HEAD
 
     <form method="post">
     {% csrf_token %}
@@ -62,11 +61,14 @@
 
 
 {% block header %}
-    <p>HEADER</p>
+    <h1 class="mt-2">Django People</h1>
+    <hr class="hrMy">
 {% endblock header %}
+
 {% block footer %}
     <p>FOOTER</p>
 {% endblock footer %}
+
 {% block nav %}
     <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor="lightyellow">
         <tr>
@@ -75,15 +77,8 @@
         </tr>
     </table>
 {% endblock nav %}
+
 {% block aside %}
     <p>ASIDE</p>
 {% endblock aside %}
 <!--#empty-->
-=======
-    <a href="/admin/">Admin</a>
-    <br>
-    <a href="/index/">Index</a>
-    
-</body>
-{% endblock page %}
->>>>>>> f3bafaf6ceb15e515e940ab6ac32f218cd6adb69

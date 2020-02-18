@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block page %}
+{% block content %}
     <article>
         <h1>Количество записей {{ count }}</h1>
         {% if count > 0  %}
@@ -15,10 +15,6 @@
             <h1>Нет записей</h1>
         {% endif %}
     </article>
-    <a href="/admin/">Admin</a>
-    <br>
-    <a href="/">Главная</a>   
-<<<<<<< HEAD
 
   <form method="post">
     {% csrf_token %}
@@ -28,7 +24,8 @@
 {% endblock content %}
 
 {% block header %}
-    <p>HEADER</p>
+    <h1 class="mt-2">Django People</h1>
+    <hr class="cherta" noshade>
 {% endblock header %}
 
 {% block footer %}
@@ -48,6 +45,3 @@
     <p>ASIDE</p>
 {% endblock aside %}
 <!--#empty-->
-=======
-{% endblock page %}
->>>>>>> f3bafaf6ceb15e515e940ab6ac32f218cd6adb69
