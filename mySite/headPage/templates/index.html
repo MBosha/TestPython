@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block page %}
+    <article>
+        <h1>Количество записей {{ count }}</h1>
+        {% if count > 0  %}
+            <ul>
+                {% for section in sections %}
+                    <li>{{section.section_title}}</li>
+                    <li>{{section.section_url}}</li>
+                    <li>{{section.section_description}}</li>
+                    <br>
+                {% endfor %} 
+            </ul>
+        {% else %}
+            <h1>Нет записей</h1>
+        {% endif %}
+    </article>
+    <a href="/admin/">Admin</a>
+    <br>
+    <a href="/">Главная</a>   
+<<<<<<< HEAD
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-success">Save person</button>
+  </form>
+{% endblock content %}
+
+{% block header %}
+    <p>HEADER</p>
+{% endblock header %}
+
+{% block footer %}
+    <p>FOOTER</p>
+{% endblock footer %}
+
+{% block nav %}
+    <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor="lightyellow">
+        <tr>
+            <th><a href="/admin/">Admin</a></th>
+            <th><a href="/">Главная</a></th>
+        </tr>
+    </table>
+{% endblock nav %}
+
+{% block aside %}
+    <p>ASIDE</p>
+{% endblock aside %}
+<!--#empty-->
+=======
+{% endblock page %}
+>>>>>>> f3bafaf6ceb15e515e940ab6ac32f218cd6adb69

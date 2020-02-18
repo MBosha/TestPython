@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block page %}
+
+<body>
+    <p>Запрос: {{request}}</p>
+    {% if latest_firstPage > 50 %}
+        <span style = "color:rgb(255,0,0)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
+    {% else %}
+        <span style = "color:rgb(0,0,255)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
+    {% endif %}
+    
+    <span>Test.var_1: {{ var_1 }}</span> <br>
+    <span>range: {{ range }}</span> <br>
+    <span>Количество статей: {{ rend }}</span> <br>
+
+    {% if latest_firstPage > 50 %}
+        <div class="orangeClass"></div>
+        <p>Ветка IF</p>
+        <ul>
+            {% for i in range %}
+            <li>
+                <a href="https://yandex.ru/search/?text={{i}}" target="_blank">
+                    {{ i }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        </div>
+    {% else %}
+        <p>Ветка ELSE</p>
+        <span>START</span> <br>
+        <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor='lightgray'>
+            <tr>
+                <th>Заголовок</th>
+                <th>Секция</th>
+                <th>Пользователь</th>
+                <th>Создано</th>
+                <th>Содержимое</th>
+                <th>Статус</th>
+            </tr>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.article_title }}</td>
+                    <td>{{ article.article_section }}</td>
+                    <td>{{ article.article_author }}</td>
+                    <td>{{ article.article_date }}</td>
+                    <td>{{ article.article_content }}</td>
+                    <td>{{ article.article_status }}</td>
+                </tr>            
+            {% endfor %}
+        </table>
+        <span>END</span> <br> <br>
+    {% endif %}
+<<<<<<< HEAD
+
+    <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-success">Save person</button>
+  </form>
+{% endblock content %}
+
+
+{% block header %}
+    <p>HEADER</p>
+{% endblock header %}
+{% block footer %}
+    <p>FOOTER</p>
+{% endblock footer %}
+{% block nav %}
+    <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor="lightyellow">
+        <tr>
+            <th><a href="/admin/">Admin</a></th>
+            <th><a href="/index/">Index</a></th>
+        </tr>
+    </table>
+{% endblock nav %}
+{% block aside %}
+    <p>ASIDE</p>
+{% endblock aside %}
+<!--#empty-->
+=======
+    <a href="/admin/">Admin</a>
+    <br>
+    <a href="/index/">Index</a>
+    
+</body>
+{% endblock page %}
+>>>>>>> f3bafaf6ceb15e515e940ab6ac32f218cd6adb69
