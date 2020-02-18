@@ -1,3 +1,4 @@
+ЭТО КОМАНДЫ ДЖАНГО
 || создание проекта ||
 py manage.py startproject
 
