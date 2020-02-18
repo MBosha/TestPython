@@ -79,3 +79,4 @@ class MyArticleView(View):
         context['article'] = article
  
         return render(request, template_name=self.template_name, context=context)
+        #empty

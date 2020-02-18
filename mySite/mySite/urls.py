@@ -22,3 +22,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', MyIndexView.as_view()),
 ]
+#empty
