@@ -24,21 +24,15 @@
 {% endblock content %}
 
 {% block header %}
-    <h1 class="mt-2">Django People</h1>
-    <hr class="cherta" noshade>
+    {% include "header.html" with name="Index" %}
 {% endblock header %}
 
 {% block footer %}
-    <p>FOOTER</p>
+    {% include "footer.html" %}
 {% endblock footer %}
 
 {% block nav %}
-    <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor="lightyellow">
-        <tr>
-            <th><a href="/admin/">Admin</a></th>
-            <th><a href="/">Главная</a></th>
-        </tr>
-    </table>
+    {% include "nav.html" with path="" page="Главная"%}
 {% endblock nav %}
 
 {% block aside %}

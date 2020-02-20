@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
-{% block content %}
 
-<body>
+{% block content %}
     <p>Запрос: {{request}}</p>
     {% if latest_firstPage > 50 %}
         <span style = "color:rgb(255,0,0)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
@@ -14,18 +13,16 @@
     <span>Количество статей: {{ rend }}</span> <br>
 
     {% if latest_firstPage > 50 %}
-        <div class="orangeClass"></div>
-        <p>Ветка IF</p>
+        <p class="orangeClass">Ветка IF</p> <br>
         <ul>
             {% for i in range %}
-            <li>
-                <a href="https://yandex.ru/search/?text={{i}}" target="_blank">
-                    {{ i }}
-                </a>
-            </li>
+                <li>
+                    <a href="https://yandex.ru/search/?text={{i}}" target="_blank">
+                        {{ i }}
+                    </a>
+                </li>
             {% endfor %}
-        </ul>
-        </div>
+        </ul>        
     {% else %}
         <p>Ветка ELSE</p>
         <span>START</span> <br>
@@ -53,32 +50,29 @@
     {% endif %}
 
     <form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit" class="btn btn-success">Save person</button>
-  </form>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Save person</button>
+    </form>
+
 {% endblock content %}
 
 
 {% block header %}
-    <h1 class="mt-2">Django People</h1>
-    <hr class="hrMy">
+    {% include "header.html" with name="Главная" %}
 {% endblock header %}
 
 {% block footer %}
-    <p>FOOTER</p>
+    {% include "footer.html" %}
 {% endblock footer %}
 
-{% block nav %}
-    <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor="lightyellow">
-        <tr>
-            <th><a href="/admin/">Admin</a></th>
-            <th><a href="/index/">Index</a></th>
-        </tr>
-    </table>
+{% block nav %}    
+    {% include "nav.html" with path="index" page="Index"%}
 {% endblock nav %}
 
-{% block aside %}
-    <p>ASIDE</p>
-{% endblock aside %}
-<!--#empty-->
+{% block asideLeft %}
+    {% include "asideLeft.html" %}    
+{% endblock asideLeft %}
+
+{% block asideRight %}
+    {% include "asideRight.html" %}    
+{% endblock asideRight %}
