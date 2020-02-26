@@ -13,16 +13,21 @@
     <span>Количество статей: {{ rend }}</span> <br>
 
     {% if latest_firstPage > 50 %}
-        <p class="orangeClass">Ветка IF</p> <br>
-        <ul>
+        <p id="orangeClass">Ветка IF</p> <br>
+        <span>START</span> <br>
+        <table width="50%%" border="1" cellpadding="5" cellspacing="1" bgcolor='lightgray'>
+            <tr>
+                <th>№ п/п</th>
+                <th>Ссылка</th>
+            </tr>
             {% for i in range %}
-                <li>
-                    <a href="https://yandex.ru/search/?text={{i}}" target="_blank">
-                        {{ i }}
-                    </a>
-                </li>
+                <tr>
+                    <td>{{ i }}</td>
+                    <td> <a href="https://yandex.ru/search/?text={{i}}" target="_blank">Найти в яндекс: {{ i }}</a></td>
+                <tr>
             {% endfor %}
-        </ul>        
+        </table>
+        <span>END</span> <br> <br>
     {% else %}
         <p>Ветка ELSE</p>
         <span>START</span> <br>
@@ -51,7 +56,12 @@
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-success">Save person</button>
+        <table>
+            {{ bookForm }}            
+            {{ userForm }}  
+        </table>
+        <br>
+        <button type="submit" class="btn btn-success" name="print_btn">Save</button>
     </form>
 
 {% endblock content %}

@@ -6,6 +6,8 @@ from django.db.models.query_utils import DeferredAttribute
 from django.views.generic.list import ListView
 from django.http import Http404
 
+from .forms import UserForm, BookForm
+
 from .models import Section, Article
 
 import datetime
@@ -13,6 +15,8 @@ import random
 
 class MyView(View):
     model = Article
+    userForm = UserForm
+    bookForm = BookForm
     template_name = 'headPage.html'
     context_object_name = 'articles'
 
@@ -28,7 +32,7 @@ class MyView(View):
             raise Http404("ЭТО ЧТО ТО ЗА НАДПИСЬ")
             #raise RuntimeError('RuntimeError')
         rend = self.model.objects.count()
-        context = {"latest_firstPage": randomNum2, "var_1" : randomNum3, "range": range(randomNum1), "rend" : rend, 'articles':articles}
+        context = {"latest_firstPage": randomNum2, "var_1" : randomNum3, "range": range(randomNum1), "rend" : rend, 'articles':articles, 'userForm':self.userForm, 'bookForm':self.bookForm,}
         return render(request, self.template_name, context=context)
 
     def my_view(self, request):
@@ -47,14 +51,14 @@ class MyView(View):
 
 class MyIndexView(View):
     model = Section
+    form = UserForm
     template_name = 'index.html'
     context_object_name = 'sections'
  
     def get(self, request, *args, **kwargs):
-
         sections = self.model.objects.all()
         count = self.model.objects.count()
-        context = {'sections':sections,'count':count,} 
+        context = {'sections':sections,'count':count,'form':self.form} 
         return render(request, self.template_name, context=context)
  
 class MySectionView(View):
@@ -78,4 +82,11 @@ class MyArticleView(View):
         context['article'] = article
  
         return render(request, template_name=self.template_name, context=context)
-        #empty
+
+def index(request):
+    if request.POST:
+        #name = request.POST.get("name")
+        # age = request.POST.get("age")     # получение значения поля age
+        return HttpResponse("if")
+    else:
+        return HttpResponse("else")

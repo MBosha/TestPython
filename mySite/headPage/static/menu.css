@@ -1,0 +1,119 @@
+/* МЕНЮ */
+/*параметр checked="checked" - обозначает открытие при обновлении*/
+.vertmenu_l {    
+    margin-left: 10px;    
+    margin-right: 5px; 
+    font-family: 'Arial', sans-serif;
+}
+/*все пункты меню*/
+.vertmenu_l a { 
+    color: gray;
+    font-size: 14px;
+    font-weight:bold;
+    text-decoration:none;
+}
+/*пункты меню имеющие подпункты*/
+.vertmenu_l a.active_l {
+    color: black;
+}
+/*текст всех  UL LI*/
+.vertmenu_l ul li {
+    position: relative;
+    margin-right: 5px;
+    line-height: 21px;
+    color: magenta;
+    /*text-transform: uppercase;*/
+}
+/*отрисовка значка '+'*/
+.vertmenu_l .subCat_l.plus,
+.chka_l:before,
+.vertmenu_l .subCat_l.minus,
+.subCat_l:checked + .chka_l:before {
+    content: '+';
+    font-size: 21px;
+    color: blue;
+    font-weight: bold;
+    font-family: Courier;    
+}
+/*отрисовка значка '-'*/
+.vertmenu_l .subCat_l.minus, .subCat_l:checked + .chka_l:before {
+    content: '-';
+}
+
+/*пункты меню без вложений*/
+.vertmenu_l ul li li a {
+    color: #666;
+    font-size: 13px;
+    font-weight:normal;
+    text-decoration:none;    
+}
+/*пунк меню под курсором*/
+.vertmenu_l a:hover {
+    text-decoration: none;
+    color: navy !important;
+    cursor: pointer;
+}
+/*цвет не выделенной галочки меню*/
+.vertmenu_l ul li li a:before {
+    content: '\203A';
+    font-size: 21px;
+    padding-right: 6px;
+    color: #666;
+    font-weight: bold;
+}
+/*цвет выделенной галочки меню*/
+.vertmenu_l > ul li li a:hover:before {
+    color: red;
+}
+/*курсор над значком раскрытия меню*/
+.vertmenu_l .subCat_l, .chka_l {
+    top: 0;
+    right: 0px;
+    position: absolute;
+    cursor: pointer;
+    color: magenta;
+}
+
+/*ХЗ ЧТО*/
+.vertmenu_l > ul > li a.active_l + span + ul {
+    display: block !important;
+    color: magenta;
+}
+
+.vertmenu_l > ul > li ul {
+    display: none;
+    color: magenta;
+}
+.vertmenu_l input[type=checkbox].subCat_l {
+    display:none;
+    color: magenta;
+}
+.vertmenu_l > ul > li .subCat_l:checked ~ ul {
+    display: block !important;
+    color: magenta;
+}
+/*поясняющий текст после UL*/
+.vertmenu_l ul {
+    list-style: none;
+    margin: 10;
+    padding: 0;   
+    color: magenta; 
+}
+/*поясняющий текст после UL LI LI*/
+.vertmenu_l ul li li {    
+    padding-left:20px;
+    color: magenta;
+}
+/* МЕНЮ */
+
+
+.divTest {
+    font-size: 25px;
+    min-height: 100px;
+    width: 40%;
+    margin: 20px;
+    padding: 15px; /* Поля вокруг текста */
+    border: 2px solid orange;
+    border-radius: 15px; /* Уголки */
+    float: left;
+}

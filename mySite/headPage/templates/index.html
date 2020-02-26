@@ -19,7 +19,8 @@
   <form method="post">
     {% csrf_token %}
     {{ form }}
-    <button type="submit" class="btn btn-success">Save person</button>
+    <br>
+    <button type="submit">Save person</button>
   </form>
 {% endblock content %}
 
@@ -38,4 +39,3 @@
 {% block aside %}
     <p>ASIDE</p>
 {% endblock aside %}
-<!--#empty-->

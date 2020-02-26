@@ -25,4 +25,7 @@ class Article(models.Model):
  
     def __str__(self):
         return self.article_title
-#empty
+
+class Book(models.Model):
+    header = models.CharField(max_length=200, help_text='Заголовок', blank=False,)
+    description = models.TextField(help_text='Описание', blank=False,)

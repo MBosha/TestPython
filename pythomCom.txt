@@ -1,3 +1,6 @@
+|| переход к папке ||
+cd mySite
+
 ЭТО КОМАНДЫ ДЖАНГО
 || создание проекта ||
 py manage.py startproject

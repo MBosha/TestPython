@@ -18,8 +18,7 @@ from django.urls import include, path
 from headPage.views import MyView, MyIndexView, MySectionView, MyArticleView
 
 urlpatterns = [    
-    path('', MyView.as_view(), name='my-view'),
+    path('', MyView.as_view()),
     path('admin/', admin.site.urls),
     path('index/', MyIndexView.as_view()),
 ]
-#empty
