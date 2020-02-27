@@ -31,6 +31,9 @@ class Book(models.Model):
     description = models.TextField(help_text='Описание', blank=False,)
 
 class Tovar(models.Model):
+    class Meta:
+        db_table = "tovar"
+    
     name = models.CharField(max_length=200)
     discript = models.TextField()
     cost = models.IntegerField()
