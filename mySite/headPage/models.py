@@ -29,8 +29,3 @@ class Article(models.Model):
 class Book(models.Model):
     header = models.CharField(max_length=200, help_text='Заголовок', blank=False,)
     description = models.TextField(help_text='Описание', blank=False,)
-
-class Tovar(models.Model):
-    name = models.CharField(max_length=200)
-    discript = models.TextField()
-    cost = models.IntegerField()
