@@ -8,7 +8,7 @@ function changeFunction(str) {
         if (this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText;
         } else {
-            document.getElementById("content").innerHTML = 'НЕТ ЗНАЧЕНИЯ' + '<br>' + 'Статус: ' + this.status + '<br>' + document.cookie;
+            document.getElementById("content").innerHTML = 'НЕТ ЗНАЧЕНИЯ' + '<br>' + 'Статус: ' + this.status;
         }
     };
     xhr.send();

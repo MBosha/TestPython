@@ -20,12 +20,3 @@ class BookForm(forms.Form):
 class UserForm(forms.Form):
     name = forms.CharField()
     age = forms.IntegerField()
-
-class TovarForm(forms.Form):
-    name = forms.CharField()
-    discript = forms.CharField()
-    cost = forms.IntegerField()
-
-    def getName(self):
-        name = self.name
-        return name

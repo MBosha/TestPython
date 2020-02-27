@@ -4,10 +4,10 @@
         <h1>Количество записей {{ count }}</h1>
         {% if count > 0  %}
             <ul>
-                {% for tovar in tovars %}
-                    <li>{{tovar.name}}</li>
-                    <li>{{tovar.discript}}</li>
-                    <li>{{tovar.cost}}</li>
+                {% for section in sections %}
+                    <li>{{section.section_title}}</li>
+                    <li>{{section.section_url}}</li>
+                    <li>{{section.section_description}}</li>
                     <br>
                 {% endfor %} 
             </ul>
@@ -15,6 +15,13 @@
             <h1>Нет записей</h1>
         {% endif %}
     </article>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <button type="submit">Save person</button>
+  </form>
 {% endblock content %}
 
 {% block header %}
@@ -26,7 +33,7 @@
 {% endblock footer %}
 
 {% block nav %}
-    {% include "nav.html" %}
+    {% include "nav.html" with path="" page="Главная"%}
 {% endblock nav %}
 
 {% block aside %}
