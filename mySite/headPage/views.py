@@ -6,6 +6,7 @@ from django.db.models.query_utils import DeferredAttribute
 from django.views.generic.list import ListView
 from django.http import Http404
 from django.urls import reverse
+from screeninfo import get_monitors
 
 from .forms import UserForm, BookForm, TovarForm
 
@@ -20,6 +21,7 @@ class MyView(View):
     bookForm = BookForm
     template_name = 'headPage.html'
     context_object_name = 'articles'
+    
 
     def get(self, request, *args, **kwargs):
         #body = 'Hello, World!' + MyView.current_datetime()
@@ -37,12 +39,12 @@ class MyView(View):
         return render(request, self.template_name, context=context)
 
     def my_view(self, request):
-        if request:
+        if not request:
             return HttpResponseNotFound('<h1>Page not found</h1>')
         else:
             return HttpResponse('<h1>Page was found</h1>')
         
-        return HttpResponse(status=201)
+        return HttpResponse(status=2001)
 
     @staticmethod
     def current_datetime():
@@ -51,14 +53,14 @@ class MyView(View):
         return html
 
 class MyIndexView(View):
-    model = Tovar
+    tovar = Tovar
     form = UserForm
     template_name = 'index.html'
     context_object_name = 'sections'
  
     def get(self, request, *args, **kwargs):
-        tovars = self.model.objects.all()
-        count = self.model.objects.count()
+        tovars = self.tovar.objects.all()
+        count = self.tovar.objects.count()
         context = {'tovars':tovars,'count':count,'form':self.form} 
         return render(request, self.template_name, context=context)
  
@@ -90,26 +92,33 @@ class MyTovarView(View):
     form = TovarForm
     template_name = 'tovar.html'
     context_object_name = 'tovar'
-    count = '---'
  
-    def get(self, request):
-        #sections = self.model.objects.all()
-        #count = self.model.objects.count()        
-        if request.method == 'post':
-            self.count = 'if'
-            self.form = TovarForm(request.POST)
-            return HttpResponseRedirect(reverse('all-borrowed'))                
-        else:
-            self.count = 'else ' + str(request.encoding)
-        context = {'count':self.count, 'form':self.form,} 
+    def get(self, request, *args, **kwargs):
+        context = {'id':-1, 'form':self.form,} 
         return render(request, self.template_name, context=context)
     
     def post(self, request, *args, **kwargs):
-        #var = request.method + '--' + str(request.POST.get('name')) 
-        name =  request.POST.get('name')
         discript =  request.POST.get('discript')
         cost =  request.POST.get('cost')
-        context = {'name':name, 'discript':discript, 'cost':cost, 'form':self.form,} 
-        b = self.tovar(name=name, discript=discript, cost=cost,)
-        b.save()
+        name =  request.POST.get('name')
+        if (self.baseCheck(name)):
+            b = self.tovar(name=name, discript=discript, cost=cost,)
+            b.save()
+            context = {'name':name, 'discript':discript, 'cost':cost, 'id':1, 'form':self.form,} 
+        else:
+            context = {'id':0, 'form':self.form,}
+        return render(request, self.template_name, context=context)
+    
+    def baseCheck (self, name):
+        #проверка наличия записи с таким названием в базе
+        if (self.tovar.objects.filter(name=name)):
+            return False
+        return True
+
+class MyWindyView(View):
+    template_name = 'windy.html'
+    context_object_name = 'windy'
+
+    def get(self, request, *args, **kwargs):
+        context = {'id':-1,} 
         return render(request, self.template_name, context=context)

@@ -9,7 +9,7 @@ class Section(models.Model):
     section_url = models.CharField(max_length=50)
     section_description = models.TextField()
  
-    def __str__(self):
+    def title(self):
         return self.section_title
 
 class Article(models.Model):
@@ -23,7 +23,7 @@ class Article(models.Model):
     article_content = models.TextField()
     article_status = models.IntegerField()
  
-    def __str__(self):
+    def title(self):
         return self.article_title
 
 class Book(models.Model):

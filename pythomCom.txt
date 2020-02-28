@@ -1,3 +1,6 @@
+|| запуск сервера ||
+py manage.py runserver
+
 || переход к папке ||
 cd mySite
 
@@ -16,10 +19,6 @@ py manage.py migrate
 
 || создание пользователя Администратор ||
 py manage.py createsuperuser
-
-|| запуск сервера ||
-py manage.py runserver
-
 
 Available subcommands:
 

@@ -5,9 +5,9 @@
         {% if count > 0  %}
             <ul>
                 {% for tovar in tovars %}
-                    <li>{{tovar.name}}</li>
-                    <li>{{tovar.discript}}</li>
-                    <li>{{tovar.cost}}</li>
+                    <li>Наименование: {{tovar.name}}</li>
+                    <li>Описание: {{tovar.discript}}</li>
+                    <li>Стоимость: {{tovar.cost}}</li>
                     <br>
                 {% endfor %} 
             </ul>
@@ -32,3 +32,11 @@
 {% block aside %}
     <p>ASIDE</p>
 {% endblock aside %}
+
+{% block asideLeft %}
+    {% include "asideLeft.html" %}    
+{% endblock asideLeft %}
+
+{% block asideRight %}
+    {% include "asideRight.html" %}    
+{% endblock asideRight %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div
+        data-windywidget="forecast"
+        data-spotid="350587"
+        data-appid="41b66f7365dd15496e3d086dd8d38c12">
+    </div>
+    <script async="true" data-cfasync="false" type="text/javascript" src="https://windy.app/widget/windy_forecast_async.js"></script>
+{% endblock content %}
+
+{% block header %}
+    {% include "header.html" with name="Windy" %}
+{% endblock header %}
+
+{% block footer %}
+    {% include "footer.html" %}
+{% endblock footer %}
+
+{% block nav %}    
+    {% include "nav.html" %}
+{% endblock nav %}
+
+{% block asideLeft %}
+    {% include "asideLeft.html" %}    
+{% endblock asideLeft %}
+
+{% block asideRight %}
+    {% include "asideRight.html" %}    
+{% endblock asideRight %}

@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% if  name %}
-        {{ name }}<br>
-        {{ discript }}<br>
-        {{ cost }}<br>
+    {% if id == -1 %}
+        Введите данные:<br>
+    {% endif %}
+    {% if id == 1 %}
+        Данные записанные в базу данных:<br>
+        Наименование: {{ name }}<br>
+        Описание: {{ discript }}<br>
+        Стоимость: {{ cost }}<br>
+    {% endif %}
+    {% if id == 0 %}
+        Запись с таким наименованием уже есть в базе данных<br>
     {% endif %}
     <form method="post">        
         {% csrf_token %}
@@ -14,7 +21,7 @@
 {% endblock content %}
 
 {% block header %}
-    {% include "header.html" %}
+    {% include "header.html" with name="Товар" %}
 {% endblock header %}
 
 {% block footer %}
