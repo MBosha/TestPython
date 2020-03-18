@@ -2,10 +2,10 @@
 /*параметр checked="checked" - обозначает открытие при обновлении*/
 .vertmenu_l {    
     margin-left: 10px;    
-    margin-right: 0px; 
+    margin-right: 10px; 
     font-family: 'Arial', sans-serif;
 }
-/*все пункты меню*/
+/*первые пункты меню*/
 .vertmenu_l a { 
     font-size: 14px;
     font-weight:bold;
@@ -69,7 +69,7 @@
     right: 0px;
     position: absolute;
     cursor: pointer;
-    color: magenta;
+    /*color: yellowgreen;*/
 }
 
 /*ХЗ ЧТО*/

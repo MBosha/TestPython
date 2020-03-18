@@ -1,37 +1,43 @@
 //функции аккордеона
 /*
 $(document).ready(function(){
-    $("#vertmenu_l").css("background-color", "yellow"); 
     initMenu();
 })
+*/
 
 
 function initMenu() {
     //$('.active_l').hide();
-    elements = document.getElementsByClassName('subCat_l');    
-    element = elements[0];
-    str = '';
-    str = str + element.textContent;
-    alert(str);
-    //element.checked = true;
-    
+    str = 'Элементы: ';    
+    let elements = document.getElementsByClassName('vertmenu_l');   
+    document.write(elements.length);
+    let element = elements.item(0);
+    //document.write(element + '<br>');
+    //element.outerHTML = '111';
+    document.write(element.id);
+    //elements.forEach((x) => document.write(x));
+    //str = elements.item(0).outerHTML;
+    document.write(element);
 
-    $('.vertmenu_l').click(         
-        function() {            
+    $('.vertmenu_l a').click(         
+        function() {    
+            document.write('0');        
             var iselemnt = $(this).next();
             if((iselemnt.is('ul')) && (iselemnt.is(':visible'))) {
                 return false;
+                document.write('1');
             }
 
             if((iselemnt.is('ul')) && (!iselemnt.is(':visible'))) {
                 $('.vertmenu_l ul:visible').slideUp('normal');
                 iselemnt.slideDown('normal');
                 return false;
+                document.write('2');
             }
         }
     ); 
 }
-*/
+
 
 //функции загрузки содержимого
 function changeFunction(str) {
@@ -48,11 +54,9 @@ function changeFunction(str) {
                                                             + '<br>'
                                                             + 'Статус: ' + this.status 
                                                             + '<br>' 
-                                                            + 'ID элетента: ' + str
+                                                            + 'ID элемента: ' + str
                                                             + '<br>' 
-                                                            + 'URL элетента: ' + url
-                                                            + '<br>' 
-                                                            + document.cookie;
+                                                            + 'URL элемента: ' + url
         }
     };
     xhr.send();

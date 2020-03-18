@@ -1,8 +1,11 @@
+/*
 $(document).ready(function(){
     initMenu();
+    
 })
 
 function initMenu() {
+    //console.log('Сообщениe');
 
     $('#vertmenu_l ul').hide();
     $('#vertmenu_l ul li:eq(0)').show();
@@ -22,3 +25,4 @@ function initMenu() {
         }
     );
 }
+*/
