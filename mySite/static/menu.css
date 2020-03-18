@@ -2,26 +2,24 @@
 /*параметр checked="checked" - обозначает открытие при обновлении*/
 .vertmenu_l {    
     margin-left: 10px;    
-    margin-right: 5px; 
+    margin-right: 0px; 
     font-family: 'Arial', sans-serif;
 }
 /*все пункты меню*/
 .vertmenu_l a { 
-    color: gray;
     font-size: 14px;
     font-weight:bold;
     text-decoration:none;
 }
-/*пункты меню имеющие подпункты*/
+/*первые пункты меню*/
 .vertmenu_l a.active_l {
-    color: black;
+    color: black; /*black*/
 }
 /*текст всех  UL LI*/
 .vertmenu_l ul li {
     position: relative;
-    margin-right: 5px;
+    margin-right: 10px;
     line-height: 21px;
-    color: magenta;
     /*text-transform: uppercase;*/
 }
 /*отрисовка значка '+'*/
@@ -40,9 +38,9 @@
     content: '-';
 }
 
-/*пункты меню без вложений*/
+/*пункты меню 2 уровень*/
 .vertmenu_l ul li li a {
-    color: #666;
+    color: #666; /*#666*/
     font-size: 13px;
     font-weight:normal;
     text-decoration:none;    
@@ -95,13 +93,13 @@
 /*поясняющий текст после UL*/
 .vertmenu_l ul {
     list-style: none;
-    margin: 10;
+    margin: 5px;
     padding: 0;   
     color: magenta; 
 }
-/*поясняющий текст после UL LI LI*/
+/*поясняющий текст после UL LI LI 2 уровень меню*/
 .vertmenu_l ul li li {    
-    padding-left:20px;
+    padding-left:5px;
     color: magenta;
 }
 /* МЕНЮ */

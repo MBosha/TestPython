@@ -1,0 +1,145 @@
+<div class="chapterText">
+    <h2>
+        <p>5.1.1 Выбор режима управления.</p>
+    </h2>
+    <div>
+        В программном обеспечении R-1 Online предусмотрено несколько режимов
+        управления Системой RAZ. Выбор режима осуществляется на странице
+        «Режимы. Выбор режимов».<br>
+        <br>
+        <img src="pages/images/img-5_1_1.png" width=100%>
+        <br>
+        Для эффективной работы Системы необходимо указать наиболее подходящие
+        для неё режимы управления для каждого контура, который выбирается в
+        выпадающем списке в левом верхнем углу. <br>
+        <br>
+        <table width="100%" border="1" cellspacing="1" cellpadding="10">
+          <caption><b>Настройки режимов управления</b></caption>
+          <!--строка №1 шапка-->
+          <tr>
+            <th width="20%">Регулирование</th>
+            <th width="40%">Выбираемый параметр</th>
+            <th width="40%">Описание</th>
+          </tr>
+          <!--строка №2-->
+          <tr>
+            <td rowspan="2">Способ регулирования температуры</td>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br></div>
+              <div style="display: inline-block;">1. Регулирование температуры <br> подающего теплоносителя</div>
+            </td>
+            <td>Поддержание заданной температуры в прямом трубопроводе сети</td>
+          </tr>
+          <tr>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br></div>
+              <div style="display: inline-block;">2. Регулирование температуры <br> обратного теплоносителя</div>
+            </td>
+            <td>Поддержание заданной температуры в прямом трубопроводе сети с коррекцией по температуре в обратном трубопроводе</td>
+          </tr>
+          <!--строка №3-->
+          <tr>
+            <td rowspan="2">Способ регулирования температуры подающего теплоносителя:</td>
+            <td>
+                <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br><br></div>
+                <div style="display: inline-block;">1. Поддержание постоянной <br>температуры теплоносителя. <br> Каскадное регулирование смесителей </div>
+            </td>
+            <td>Поддержание температуры в прямом трубопроводе осуществляется по заданию от оператора</td>
+          </tr>
+          <tr>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br><br></div>
+              <div style="display: inline-block;">2. Погодозависимое регулирование  <br>температуры теплоносителя. <br> Каскадное регулирование смесителей </div>
+            </td>
+            <td>Поддержание температуры в прямом трубопроводе осуществляется по погодозависимому графику</td>
+          </tr>
+          <!--строка №4-->
+          <tr>
+            <td rowspan="4"><b>Для Сети:</b> <br>Способ регулирования перепада давления и расхода в контуре. <br> Эти параметры выбираются парно:</td>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br><br></div>
+              <div style="display: inline-block;">2. Поддержание постоянного перепада <br> давления <br>Частотно-каскадное регулирование <br> насосов</div>
+            </td>
+            <td rowspan="2">Включение узлов R-8 производится каскадно по температуре в прямом трубопроводе и по перепаду давления в сети</td>
+          </tr>
+          <tr>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br></div>
+              <div style="display: inline-block;">2. Изменение расхода теплоносителя <br>Каскадное регулирование насосов</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br><br></div>
+              <div style="display: inline-block;">3. Поддержание постоянного перепада <br> давления <br>Частотно-каскадное регулирование <br> насосов</div>
+            </td>
+            <td rowspan="2">Включение узлов R-8 производится по погодозависимому графику</td>
+          </tr>
+          <tr>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br><br></div>
+              <div style="display: inline-block;">3. Изменение расхода теплоносителя <br>Температурно-каскадное регулирование <br> насосов</div>
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="4"><b>Для ГВС</b>:<br>Способ регулирования расхода в контуре.<br>Эти параметры выбираются парно:</td>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"></div>
+              <div style="display: inline-block;">2. Поддержание циркуляции</div>
+            </td>
+            <td rowspan="2">Включение узлов R-4 производится каскадно по температуре в прямом трубопроводе </td>
+          </tr>
+          <tr>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br><br></div>
+              <div style="display: inline-block;">2. Изменение расхода теплоносителя <br>Каскадное регулирование <br> насосов</div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"></div>
+              <div style="display: inline-block;">3. Поддержание циркуляции</div>
+            </td>
+            <td rowspan="2">Включение узлов R-4 производится по временному графику</td>
+          </tr>
+          <tr>
+            <td>
+              <div style="display: inline-block; width: 10px; height: 10px; background: gray; border-radius: 50%;"><br><br></div>
+              <div style="display: inline-block;">3. Изменение расхода теплоносителя <br>Температурно-каскадное регулирование <br> насосов</div>
+            </td>
+          </tr>
+        </table>
+        <br>
+    </div>
+    <div>
+        <table width="100%" border="1" cellspacing="1" cellpadding="10">
+          <tr>
+              <td>
+                  <img src="pages/images/znak_vskl_white.png" width="55">
+              </td>
+              <td>
+                  <b>
+                      <span style="color: blue">ВНИМАНИЕ!</span><br>
+                      Для корректной работы Операторов должны быть настроены
+                      все режимы управления.
+                  </b>
+              </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="pages/images/znak_vskl_white.png" width="55">
+                </td>
+                <td>
+                    <b>
+                        <span style="color: blue">ВНИМАНИЕ!</span><br>
+                        Для эффективной работы Системы необходимо настроить
+                        выбранные режимы управления на странице
+                        «Режимы. Настройка режимов».
+                    </b>
+                </td>
+              </tr>
+
+        </table>
+        <br>
+    </div>
+</div>

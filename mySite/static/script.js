@@ -1,5 +1,41 @@
+//функции аккордеона
+/*
+$(document).ready(function(){
+    $("#vertmenu_l").css("background-color", "yellow"); 
+    initMenu();
+})
+
+
+function initMenu() {
+    //$('.active_l').hide();
+    elements = document.getElementsByClassName('subCat_l');    
+    element = elements[0];
+    str = '';
+    str = str + element.textContent;
+    alert(str);
+    //element.checked = true;
+    
+
+    $('.vertmenu_l').click(         
+        function() {            
+            var iselemnt = $(this).next();
+            if((iselemnt.is('ul')) && (iselemnt.is(':visible'))) {
+                return false;
+            }
+
+            if((iselemnt.is('ul')) && (!iselemnt.is(':visible'))) {
+                $('.vertmenu_l ul:visible').slideUp('normal');
+                iselemnt.slideDown('normal');
+                return false;
+            }
+        }
+    ); 
+}
+*/
+
+//функции загрузки содержимого
 function changeFunction(str) {
-    var url = 'static/templates/' + str + '.html';
+    var url = 'static/pages/' + str + '.html';
 
     var xhr = new XMLHttpRequest();
     xhr.responseType = "text";
@@ -8,15 +44,23 @@ function changeFunction(str) {
         if (this.status == 200) {
             document.getElementById("content").innerHTML = this.responseText;
         } else {
-            document.getElementById("content").innerHTML = 'НЕТ ЗНАЧЕНИЯ' + '<br>' + 'Статус: ' + this.status + '<br>' + document.cookie;
+            document.getElementById("content").innerHTML = 'НЕТ ЗНАЧЕНИЯ' 
+                                                            + '<br>'
+                                                            + 'Статус: ' + this.status 
+                                                            + '<br>' 
+                                                            + 'ID элетента: ' + str
+                                                            + '<br>' 
+                                                            + 'URL элетента: ' + url
+                                                            + '<br>' 
+                                                            + document.cookie;
         }
     };
     xhr.send();
 
     //getCurrentPage(str);
-    test(str);
+    //test(str);
     window.scrollTo(0, 0);
-};
+}
 
 function getCurrentPage(str) {
     document.cookie = "currPage=" + str;
@@ -35,7 +79,7 @@ function getCurrentPage(str) {
     };
     xhr.send();
 
-};
+}
 
 function test(str) {
     document.cookie = "user=John";    

@@ -1,0 +1,29 @@
+Привет, сегодня: <?php echo date('l, F jS, Y'); ?>.
+<!--
+<?php
+
+echo getcwd() . '<br>';
+$dir = getcwd(). '\pages';
+$files1 = scandir($dir);
+$files2 = scandir($dir, 1);
+
+print_r($files1);
+echo '<br><br>';
+print_r($files2);
+
+?>
+-->
+<br>
+<br>
+
+<?php for ($i = 0; $i < 10; $i++): ?>
+<div class="divTest">
+    <?= $i; ?>
+    <?php if ($i%2 == 0) { ?>
+    это четный
+    <?php } else { ?>
+    а это не четный
+    <?php } ?>
+    шаг<br>
+</div>
+<?php endfor; ?>

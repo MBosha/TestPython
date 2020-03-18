@@ -1,0 +1,295 @@
+body {
+    font-family: 'Fira Sans';
+    width: auto;
+    min-height: 900px;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    overflow: scroll;
+}
+
+.razText {
+  color: red;
+  font-family:sans-serif;
+}
+
+.razItalic {
+  color: navy;
+  font-family:sans-serif;
+  font-style: italic;
+  font-weight: bold;
+  font-weight: bold;
+}
+
+.titulText {
+    font-family: 'Arial';
+    font-size: 25px;
+    margin-left: 25px;
+    background-color: lightgray;
+}
+
+.chapterText{
+    font-family: 'Tahoma';
+    font-size: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    background-color: lightgray;
+}
+
+.header {
+    width: 100%;
+    height: 75px;
+    border: 1px solid black;
+    background-color: grey;
+    vertical-align: top;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+
+.footer {
+    width: 100%;
+    height: 75px;
+    border: 1px solid black;
+    background-color: gray;
+    vertical-align: top;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+
+.menuDiv {
+    line-height: 1.5;
+    width: 25%;
+    height: 100%;
+    background-color: lightgrey;
+    display: inline-block;
+    vertical-align: top;
+    /*text-indent: 15px;*/
+    border-right: 0.5px solid black;
+}
+
+.text {
+    width: 74%;
+    height: auto;
+    background-color: lightgrey;
+    display: inline-block;
+    vertical-align: top;
+    border-left: 0.5px solid black;
+}
+
+.left {
+    width: 10%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px;
+    padding: 0px;
+}
+
+.center {
+    width: 80%;
+    height: auto;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px;
+    padding: 0px;
+    background-color: lightgrey;
+    border-right: 0.5px solid black;
+    border-left: 0.5px solid black;
+    overflow: visible;
+}
+
+.right {
+    width: 9%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px;
+    padding: 0px;
+    overflow:  hidden;
+}
+
+.menu {
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    background: #fafafa;
+    margin: 0 0 0 0;
+    padding: 0;
+}
+
+ul#menu, ul#menu ul {
+    list-style-type:none;
+    width: auto;
+    margin: 0 auto;
+    padding: 0;
+}
+
+ul#menu a {
+    display: block;
+    text-decoration: none;
+}
+
+ul#menu li {
+    margin-top: 1px;
+}
+
+ul#menu li a img {
+    vertical-align: middle;
+    padding: 0 5px 5px 0;
+}
+
+ul#menu li a {
+    background: #878e9c;
+    color: #fff;
+    padding: 5px;
+    -webkit-transition: 0.1s;
+    -moz-transition: 0.1s;
+    transition: 0.1s;
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+}
+
+ul#menu li a:hover {
+    background: #757b87;
+}
+
+ul#menu li ul li a {
+    background: #ebeaec;
+    color: #333;
+    padding-left: 15px;
+}
+
+ul#menu li ul li a:hover {
+    background: #d4d3d5;
+    padding-left: 20px;
+}
+
+.divOval {
+    font-size: 12px;
+    min-height: 250px;
+    width: 40%;
+    margin: 20px;
+    padding: 15px; /* Поля вокруг текста */
+    border: 2px solid black;
+    border-radius: 15px; /* Уголки */
+    float: left;
+}
+
+/* МЕНЮ */
+/*параметр checked="checked" - обозначает открытие при обновлении*/
+.vertmenu_l {    
+    margin-left: 10px;    
+    margin-right: 5px; 
+    font-family: 'Arial', sans-serif;
+}
+/*все пункты меню*/
+.vertmenu_l a { 
+    color: gray;
+    font-size: 14px;
+    font-weight:bold;
+    text-decoration:none;
+}
+/*пункты меню имеющие подпункты*/
+.vertmenu_l a.active_l {
+    color: black;
+}
+/*текст всех  UL LI*/
+.vertmenu_l ul li {
+    position: relative;
+    margin-right: 5px;
+    line-height: 21px;
+    color: magenta;
+    /*text-transform: uppercase;*/
+}
+/*отрисовка значка '+'*/
+.vertmenu_l .subCat_l.plus,
+.chka_l:before,
+.vertmenu_l .subCat_l.minus,
+.subCat_l:checked + .chka_l:before {
+    content: '+';
+    font-size: 21px;
+    color: blue;
+    font-weight: bold;
+    font-family: Courier;    
+}
+/*отрисовка значка '-'*/
+.vertmenu_l .subCat_l.minus, .subCat_l:checked + .chka_l:before {
+    content: '-';
+}
+
+/*пункты меню без вложений*/
+.vertmenu_l ul li li a {
+    color: #666;
+    font-size: 13px;
+    font-weight:normal;
+    text-decoration:none;    
+}
+/*пунк меню под курсором*/
+.vertmenu_l a:hover {
+    text-decoration: none;
+    color: navy !important;
+    cursor: pointer;
+}
+/*цвет не выделенной галочки меню*/
+.vertmenu_l ul li li a:before {
+    content: '\203A';
+    font-size: 21px;
+    padding-right: 6px;
+    color: #666;
+    font-weight: bold;
+}
+/*цвет выделенной галочки меню*/
+.vertmenu_l > ul li li a:hover:before {
+    color: red;
+}
+/*курсор над значком раскрытия меню*/
+.vertmenu_l .subCat_l, .chka_l {
+    top: 0;
+    right: 0px;
+    position: absolute;
+    cursor: pointer;
+    color: magenta;
+}
+
+/*ХЗ ЧТО*/
+.vertmenu_l > ul > li a.active_l + span + ul {
+    display: block !important;
+    color: magenta;
+}
+
+.vertmenu_l > ul > li ul {
+    display: none;
+    color: magenta;
+}
+.vertmenu_l input[type=checkbox].subCat_l {
+    display:none;
+    color: magenta;
+}
+.vertmenu_l > ul > li .subCat_l:checked ~ ul {
+    display: block !important;
+    color: magenta;
+}
+/*поясняющий текст после UL*/
+.vertmenu_l ul {
+    list-style: none;
+    margin: 10;
+    padding: 0;   
+    color: magenta; 
+}
+/*поясняющий текст после UL LI LI*/
+.vertmenu_l ul li li {    
+    padding-left:20px;
+    color: magenta;
+}
+/* МЕНЮ */
+
+
+.divTest {
+    font-size: 25px;
+    min-height: 100px;
+    width: 40%;
+    margin: 20px;
+    padding: 15px; /* Поля вокруг текста */
+    border: 2px solid orange;
+    border-radius: 15px; /* Уголки */
+    float: left;
+}
