@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from headPage.views import MyView, MyIndexView, MySectionView, MyArticleView, MyTovarView, MyWindyView
+from headPage.views import MyView, MyIndexView, MySectionView, MyArticleView, MyTovarView, MyWindyView, MyTest
 
 urlpatterns = [    
     path('', MyView.as_view()),

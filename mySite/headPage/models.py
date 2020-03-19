@@ -37,3 +37,18 @@ class Tovar(models.Model):
     name = models.CharField(max_length=200)
     discript = models.TextField()
     cost = models.IntegerField()
+
+class MyMenu(models.Model):
+    class Meta:
+        db_table = "mymenu"
+        ordering = ["l1"]
+
+    l1 = models.DecimalField(max_digits=3, decimal_places=0)
+    l2 = models.DecimalField(max_digits=3, decimal_places=0)
+    l3 = models.DecimalField(max_digits=3, decimal_places=0)
+    l4 = models.DecimalField(max_digits=3, decimal_places=0)
+    l5 = models.DecimalField(max_digits=3, decimal_places=0)
+    first = models.BooleanField()
+    visible = models.BooleanField()
+    content = models.CharField(max_length=200)
+    level = models.DecimalField(max_digits=3, decimal_places=0)

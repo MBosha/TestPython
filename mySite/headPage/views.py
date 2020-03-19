@@ -10,33 +10,50 @@ from screeninfo import get_monitors
 
 from .forms import UserForm, BookForm, TovarForm
 
-from .models import Section, Article, Tovar
+from .models import Section, Article, Tovar, MyMenu
 
 import datetime
 import random
 
 class MyView(View):
-    model = Article
+    menuModel = MyMenu
+    articleModel = Article
     userForm = UserForm
     bookForm = BookForm
     template_name = 'headPage.html'
     context_object_name = 'articles'
-    
 
-    def get(self, request, *args, **kwargs):
-        #body = 'Hello, World!' + MyView.current_datetime()
-        #return HttpResponse(body)        
+    def post(self, request, *args, **kwargs):
+        id =  request.POST.get('id')
+        l1 =  request.POST.get('l1')
+        l2 =  request.POST.get('l2')
+        l3 =  request.POST.get('l3')
+        l4 =  request.POST.get('l4')
+        l5 =  request.POST.get('l5')
+        first =  request.POST.get('first')
+        visible =  request.POST.get('visible')
+        level =  request.POST.get('level')
+        content =  request.POST.get('content')
+        #обновление данных в базе данных
+        self.menuModel.objects.select_related().filter(id=id).update(visible=0)
+        context = {'menu': self.menuModel,}
+        return render(request, self.template_name, context=self.fun())
+
+    def get(self, request, *args, **kwargs):   
+        return render(request, self.template_name, context=self.fun())
+
+    def fun(self):
         randomNum1 = random.randint(0, 30)
         randomNum2 = random.randint(0, 100) 
         randomNum3 = random.randint(0, 100)  
         try:
-            articles = self.model.objects.all()
+            menu = self.menuModel.objects.all()
+            articles = self.articleModel.objects.all()  
         except Exception:
-            raise Http404("ЭТО ЧТО ТО ЗА НАДПИСЬ")
-            #raise RuntimeError('RuntimeError')
-        rend = self.model.objects.count()
-        context = {"latest_firstPage": randomNum2, "var_1" : randomNum3, "range": range(randomNum1), "rend" : rend, 'articles':articles, 'userForm':self.userForm, 'bookForm':self.bookForm,}
-        return render(request, self.template_name, context=context)
+            raise Http404("ОШИБКА ЧТЕНИЯ ИЗ БАЗЫ ДАННЫХ")
+        rend = self.articleModel.objects.count()
+        context = {"latest_firstPage": randomNum2, "var_1" : randomNum3, "range": range(randomNum1), "rend" : rend, 'articles':articles, 'userForm':self.userForm, 'bookForm':self.bookForm, 'menu':menu}
+        return context
 
     def my_view(self, request):
         if not request:
@@ -86,8 +103,7 @@ class MyArticleView(View):
  
         return render(request, template_name=self.template_name, context=context)
 
-
-class MyTovarView(View):
+class MyTovarView(View):    
     tovar = Tovar
     form = TovarForm
     template_name = 'tovar.html'
@@ -122,3 +138,17 @@ class MyWindyView(View):
     def get(self, request, *args, **kwargs):
         context = {'id':-1,} 
         return render(request, self.template_name, context=context)
+
+class MyTest(View):
+    menuModel = MyMenu
+    template_name = 'windy.html'
+    context_object_name = 'windy'
+
+    def post(self, request, *args, **kwargs):
+        try:
+            menu = self.menuModel1.objects.all()
+            raise Http404("ЧТЕНИE ДАННЫХ")
+        except Exception:
+            raise Http404("ОШИБКА ЧТЕНИЯ ИЗ БАЗЫ ДАННЫХ")
+        b = self.menu(l1=1, l2=2, l3=3, l4=4, l5=5, first=0, visible=1, level=1, content='Новый уровень')
+        b.save()

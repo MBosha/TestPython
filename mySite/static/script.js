@@ -105,3 +105,20 @@ function test(str) {
     }
     xhr.send(str);
 }
+
+function myOnclick(str) {
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", 'change/', true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        //Вызывает функцию при смене состояния.
+        if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+            // Запрос завершен. Здесь можно обрабатывать результат.
+            /*document.getElementById("asideRight").innerHTML = this.responseText + document.cookie;*/
+            document.getElementById("asideRight").innerHTML = "Это куки:<br> " + document.cookie
+        }
+    }
+    xhr.send(str);
+    alert('Функция myOnclick - выполнена!');
+}

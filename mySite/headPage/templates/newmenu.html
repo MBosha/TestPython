@@ -1,0 +1,32 @@
+{% for line in menu %}
+    {% if line.level == 1 or line.visible%}        
+        <form method="POST" class="myform">
+        <input type="hidden" name="id" value="{{ line.id }}"> 
+        <input type="hidden" name="l1" value="{{ line.l1 }}">     
+        <input type="hidden" name="l2" value="{{ line.l2 }}">
+        <input type="hidden" name="l3" value="{{ line.l3 }}">
+        <input type="hidden" name="l4" value="{{ line.l4 }}">
+        <input type="hidden" name="l5" value="{{ line.l5 }}">
+        <input type="hidden" name="first" value="{{ line.first }}">
+        <input type="hidden" name="visible" value="{{ line.visible }}">
+        <input type="hidden" name="content" value="{{ line.content }}">
+        <input type="hidden" name="level" value="{{ line.level }}">
+        {% csrf_token %}
+        {% if line.level == 1 %}
+            <button type='submit' class='allbuttons level_1' id='{{ line.id }}'>{{line.content}}</button>
+        {% endif %}
+        {% if line.level == 2 %}
+            <button type='submit' class='allbuttons level_2' id='{{ line.id }}'>{{line.content}}</button>
+        {% endif %}
+        {% if line.level == 3 %}
+            <button type='submit' class='allbuttons level_3' id='{{ line.id }}'>{{line.content}}</button>
+        {% endif %}
+        {% if line.level == 4 %}
+            <button type='submit' class='allbuttons level_4' id='{{ line.id }}'>{{line.content}}</button>
+        {% endif %}
+        {% if line.level == 5 %}
+            <button type='submit' class='allbuttons level_5' id='{{ line.id }}'>{{line.content}}</button>
+        {% endif %}                   
+        </form>
+    {% endif %}
+{% endfor %}

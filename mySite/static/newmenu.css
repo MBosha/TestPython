@@ -1,0 +1,39 @@
+.myform {
+    margin: 0;
+    padding: 0;
+}
+
+.allbuttons {
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-align:left;
+    width:100%;
+    display:flex;
+    height:25px;
+}
+
+.level_1 {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.level_2 {
+    margin-left: 15px;
+    font-size: 19px;    
+}
+
+.level_3 {
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+.level_4 {
+    margin-left: 25px;
+    font-size: 17px;
+}
+
+.level_5 {
+    margin-left: 30px;
+    font-size: 16px;
+}
