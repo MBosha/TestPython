@@ -1,69 +1,75 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>Запрос: {{request}}</p>
-    {% if latest_firstPage > 50 %}
-        <span style = "color:rgb(255,0,0)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
+    {% if link != '0' %}
+        <script>
+            changeFunction('{{ link }}');
+        </script>
+        <div id="content">{{ link }}</div>    
     {% else %}
-        <span style = "color:rgb(0,0,255)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
-    {% endif %}
-    
-    <span>Test.var_1: {{ var_1 }}</span> <br>
-    <span>range: {{ range }}</span> <br>
-    <span>Количество статей: {{ rend }}</span> <br>
+        <p>Запрос: {{request}}</p>
+        {% if latest_firstPage > 50 %}
+            <span style = "color:rgb(255,0,0)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
+        {% else %}
+            <span style = "color:rgb(0,0,255)">Latest_firstPage: {{ latest_firstPage }}</span> <br>
+        {% endif %}
+        
+        <span>Test.var_1: {{ var_1 }}</span> <br>
+        <span>range: {{ range }}</span> <br>
+        <span>Количество статей: {{ rend }}</span> <br>
 
-    {% if latest_firstPage > 50 %}
-        <p id="orangeClass">Ветка IF</p> <br>
-        <span>START</span> <br>
-        <table width="50%%" border="1" cellpadding="5" cellspacing="1" bgcolor='lightgray'>
-            <tr>
-                <th>№ п/п</th>
-                <th>Ссылка</th>
-            </tr>
-            {% for i in range %}
+        {% if latest_firstPage > 50 %}
+            <p id="orangeClass">Ветка IF</p> <br>
+            <span>START</span> <br>
+            <table width="50%%" border="1" cellpadding="5" cellspacing="1" bgcolor='lightgray'>
                 <tr>
-                    <td>{{ i }}</td>
-                    <td> <a href="https://yandex.ru/search/?text={{i}}" target="_blank">Найти в яндекс: {{ i }}</a></td>
+                    <th>№ п/п</th>
+                    <th>Ссылка</th>
+                </tr>
+                {% for i in range %}
+                    <tr>
+                        <td>{{ i }}</td>
+                        <td> <a href="https://yandex.ru/search/?text={{i}}" target="_blank">Найти в яндекс: {{ i }}</a></td>
+                    <tr>
+                {% endfor %}
+            </table>
+            <span>END</span> <br> <br>
+        {% else %}
+            <p>Ветка ELSE</p>
+            <span>START</span> <br>
+            <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor='lightgray'>
                 <tr>
-            {% endfor %}
-        </table>
-        <span>END</span> <br> <br>
-    {% else %}
-        <p>Ветка ELSE</p>
-        <span>START</span> <br>
-        <table width="100%" border="1" cellpadding="5" cellspacing="1" bgcolor='lightgray'>
-            <tr>
-                <th>Заголовок</th>
-                <th>Секция</th>
-                <th>Пользователь</th>
-                <th>Создано</th>
-                <th>Содержимое</th>
-                <th>Статус</th>
-            </tr>
-            {% for article in articles %}
-                <tr>
-                    <td>{{ article.article_title }}</td>
-                    <td>{{ article.article_section }}</td>
-                    <td>{{ article.article_author }}</td>
-                    <td>{{ article.article_date }}</td>
-                    <td>{{ article.article_content }}</td>
-                    <td>{{ article.article_status }}</td>
-                </tr>            
-            {% endfor %}
-        </table>
-        <span>END</span> <br> <br>
-    {% endif %}
+                    <th>Заголовок</th>
+                    <th>Секция</th>
+                    <th>Пользователь</th>
+                    <th>Создано</th>
+                    <th>Содержимое</th>
+                    <th>Статус</th>
+                </tr>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.article_title }}</td>
+                        <td>{{ article.article_section }}</td>
+                        <td>{{ article.article_author }}</td>
+                        <td>{{ article.article_date }}</td>
+                        <td>{{ article.article_content }}</td>
+                        <td>{{ article.article_status }}</td>
+                    </tr>            
+                {% endfor %}
+            </table>
+            <span>END</span> <br> <br>
+        {% endif %}
 
-    <form method="post">
-        {% csrf_token %}
-        <table>
-            {{ bookForm }}            
-            {{ userForm }}  
-        </table>
-        <br>
-        <button type="submit" class="btn btn-success" name="print_btn">Save</button>
-    </form>
-
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                {{ bookForm }}            
+                {{ userForm }}  
+            </table>
+            <br>
+            <button type="submit" class="btn btn-success" name="print_btn">Save</button>
+        </form>  
+    {% endif %}  
 {% endblock content %}
 
 

@@ -11,6 +11,7 @@
         <input type="hidden" name="visible" value={{ line.visible }}>
         <input type="hidden" name="content" value={{ line.content }}>
         <input type="hidden" name="level" value={{ line.level }}>
+        <input type="hidden" name="link" value={{ line.link }}>
         {% csrf_token %}
         {% if line.level == 1 %}
             <button type='submit' class='allbuttons level_1' id='{{ line.id }}'>{{line.content}}</button>

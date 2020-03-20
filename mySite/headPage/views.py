@@ -34,9 +34,11 @@ class MyView(View):
         visible =  request.POST.get('visible')
         level =  request.POST.get('level')
         content =  request.POST.get('content')
+        link =  request.POST.get('link')
         #установка всех visible в 0
         self.menuModel.objects.all().update(visible=0)
         self.menuModel.objects.all().update(first=0)
+        self.menuModel.objects.all().update(activ=0)
         #обновление данных в базе данных
         # 1 уровень
         if l2 == '0':
@@ -57,12 +59,14 @@ class MyView(View):
             self.menuModel.objects.all().filter(l1=l1).filter(l3='0').update(first=1)
             for x in range(1,(int(level) + 2)):
                 self.menuModel.objects.all().filter(level=x).filter(l3=l3).filter(l3=l3).filter(l2=l2).filter(l1=l1).update(visible=1)
-        return render(request, self.template_name, context=self.fun())
+        self.menuModel.objects.all().filter(id=id).update(activ=1)
+        return render(request, self.template_name, context=self.fun(link))
 
-    def get(self, request, *args, **kwargs):   
-        return render(request, self.template_name, context=self.fun())
+    def get(self, request, *args, **kwargs):
+        link = self.menuModel.objects.all().get(activ=1)
+        return render(request, self.template_name, context=self.fun(link.link))
 
-    def fun(self):
+    def fun(self, link):
         randomNum1 = random.randint(0, 30)
         randomNum2 = random.randint(0, 100) 
         randomNum3 = random.randint(0, 100)
@@ -72,7 +76,7 @@ class MyView(View):
         except Exception:
             raise Http404("ОШИБКА ЧТЕНИЯ ИЗ БАЗЫ ДАННЫХ")
         rend = self.articleModel.objects.count()
-        context = {"latest_firstPage": randomNum2, "var_1" : randomNum3, "range": range(randomNum1), "rend" : rend, 'articles':articles, 'userForm':self.userForm, 'bookForm':self.bookForm, 'menu':menu}
+        context = {"link": link,"latest_firstPage": randomNum2, "var_1" : randomNum3, "range": range(randomNum1), "rend" : rend, 'articles':articles, 'userForm':self.userForm, 'bookForm':self.bookForm, 'menu':menu}
         return context
 
     def my_view(self, request):

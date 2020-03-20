@@ -52,3 +52,5 @@ class MyMenu(models.Model):
     visible = models.BooleanField()
     content = models.CharField(max_length=200)
     level = models.DecimalField(max_digits=3, decimal_places=0)
+    link = models.CharField(max_length=200)
+    activ = models.BooleanField()
