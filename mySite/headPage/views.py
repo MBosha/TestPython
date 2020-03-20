@@ -34,9 +34,29 @@ class MyView(View):
         visible =  request.POST.get('visible')
         level =  request.POST.get('level')
         content =  request.POST.get('content')
+        #установка всех visible в 0
+        self.menuModel.objects.all().update(visible=0)
+        self.menuModel.objects.all().update(first=0)
         #обновление данных в базе данных
-        self.menuModel.objects.select_related().filter(id=id).update(visible=0)
-        context = {'menu': self.menuModel,}
+        # 1 уровень
+        if l2 == '0':
+            for x in range(1,(int(level) + 2)):
+                self.menuModel.objects.all().filter(level=x).filter(l1=l1).update(visible=1)
+        # 2 уровень
+        elif l3 == '0':
+            self.menuModel.objects.all().filter(l1=l1).filter(l3='0').update(first=1)
+            for x in range(1,(int(level) + 2)):
+                self.menuModel.objects.all().filter(level=x).filter(l2=l2).filter(l1=l1).update(visible=1)
+        # 3 уровень
+        elif l4 == '0':
+            self.menuModel.objects.all().filter(l1=l1).filter(l3='0').update(first=1)
+            for x in range(1,(int(level) + 2)):
+                self.menuModel.objects.all().filter(level=x).filter(l3=l3).filter(l2=l2).filter(l1=l1).update(visible=1)
+        # 4 уровень
+        else:
+            self.menuModel.objects.all().filter(l1=l1).filter(l3='0').update(first=1)
+            for x in range(1,(int(level) + 2)):
+                self.menuModel.objects.all().filter(level=x).filter(l3=l3).filter(l3=l3).filter(l2=l2).filter(l1=l1).update(visible=1)
         return render(request, self.template_name, context=self.fun())
 
     def get(self, request, *args, **kwargs):   
@@ -45,7 +65,7 @@ class MyView(View):
     def fun(self):
         randomNum1 = random.randint(0, 30)
         randomNum2 = random.randint(0, 100) 
-        randomNum3 = random.randint(0, 100)  
+        randomNum3 = random.randint(0, 100)
         try:
             menu = self.menuModel.objects.all()
             articles = self.articleModel.objects.all()  

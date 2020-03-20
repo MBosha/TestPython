@@ -13,8 +13,12 @@
     height:25px;
 }
 
+button:hover {
+    color: lightcoral;
+}
+
 .level_1 {
-    margin-left: 10px;
+    margin-left: 5px;
     font-size: 20px;
 }
 
@@ -24,16 +28,16 @@
 }
 
 .level_3 {
-    margin-left: 20px;
+    margin-left: 25px;
     font-size: 18px;
 }
 
 .level_4 {
-    margin-left: 25px;
+    margin-left: 35px;
     font-size: 17px;
 }
 
 .level_5 {
-    margin-left: 30px;
+    margin-left: 45px;
     font-size: 16px;
 }
