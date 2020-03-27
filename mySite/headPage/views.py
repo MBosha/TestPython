@@ -8,9 +8,13 @@ from django.http import Http404
 from django.urls import reverse
 from screeninfo import get_monitors
 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import UpdateView
+from django.contrib.auth.views import LoginView
+
 from .forms import UserForm, BookForm, TovarForm
 
-from .models import Section, Article, Tovar, MyMenu
+from .models import Section, Article, Tovar, MyMenu, User
 
 import datetime
 import random
@@ -155,14 +159,45 @@ class MyTovarView(View):
             return False
         return True
 
-class MyWindyView(View):
+class MyWindyView(UpdateView):
     template_name = 'windy.html'
     context_object_name = 'windy'
 
-    def get(self, request, *args, **kwargs):
-        context = {'id':-1,} 
-        return render(request, self.template_name, context=context)
+    def get(self, request, *args, **kwargs):        
+        obj = self
+        username = request.user.username
+        if username != '':
+            first_name = request.user.first_name
+            last_name = request.user.last_name
+            email = request.user.email
+            password = request.user.password
+            groups = request.user.groups
+            user_permissions = request.user.user_permissions
+            is_staff = request.user.is_staff
+            is_active = request.user.is_active
+            is_superuser = request.user.is_superuser
+            last_login = request.user.last_login
+            user = {username, first_name, last_name, email, password, groups, user_permissions, is_staff, is_superuser, is_active, last_login,}
+        else:
+            user = {'НЕТ ДАННЫХ'}
+        context = {'obj': obj, 'LoginRequiredMixin': LoginRequiredMixin, 'UpdateView': UpdateView, 'user': user, 'username': username, 'reg': True, }
+        if self.test(username):
+            try:
+                return render(request, self.template_name, context=context) 
+            except Exception:
+                context = {'user': user, 'reg': False}
+                return render(request, self.template_name, context=context)
+                #raise Http404("ОШИБКА ДОСТУПА ПОЛЬЗОВАТЕЛЯ")
+        else:
+            context = {'user': user, 'reg': False}
+            return render(request, self.template_name, context=context)  
 
+    def test(self, arg):
+        if arg == '':
+            return False
+        return True
+    
+ 
 class MyTest(View):
     menuModel = MyMenu
     template_name = 'windy.html'

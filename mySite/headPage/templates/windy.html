@@ -1,10 +1,34 @@
 {% extends 'base.html' %}
 {% block content %}
+    {% if reg %}
+        Пользователь: {{ username }} <br>
+        <br>
+        obj: {{ obj }} <br>
+        obj.template_name:{{ obj.template_name }} <br>
+        obj.context_object_name: {{ obj.context_object_name }} <br>
+        obj.user: {{ obj.user }} <br>
+        obj.author: {{ obj.author }} <br>
+        request: {{ request }} <br>
+        LoginRequiredMixin.redirect_field_name: {{ LoginRequiredMixin.redirect_field_name }} <br>
+        UpdateView: {{ UpdateView }} <br>
+        <br>
+        {% for x in user %}
+            <li>{{ x }}</li>
+        {% endfor %}
+    {% else %}
+        Пользователь не авторизован
+    {% endif %}
+
+    <!--
+    {% for elem in loginRequiredMixin %}
+        <li>{{ elem }}</li>
+    {% endfor %}
     <div
         data-windywidget="forecast"
         data-spotid="350587"
         data-appid="41b66f7365dd15496e3d086dd8d38c12">
     </div>
+    -->
     <script async="true" data-cfasync="false" type="text/javascript" src="https://windy.app/widget/windy_forecast_async.js"></script>
 {% endblock content %}
 
